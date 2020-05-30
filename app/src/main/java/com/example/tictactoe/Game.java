@@ -52,6 +52,13 @@ public class Game {
                             for(int i=0;i<DualPlayerDetailsActivity.times.size();i++){
                                 Log.i("i",Integer.toString(i));
                                 if(GameView.player1Time< Double.parseDouble(DualPlayerDetailsActivity.times.get(i))){
+                                    if(i+1<DualPlayerDetailsActivity.names.size()) {
+                                        DualPlayerDetailsActivity.times.set(i + 1, DualPlayerDetailsActivity.times.get(i));
+                                        DualPlayerDetailsActivity.names.set(i + 1, DualPlayerDetailsActivity.names.get(i));
+                                    }else{
+                                        DualPlayerDetailsActivity.names.add(DualPlayerDetailsActivity.names.get(i));
+                                        DualPlayerDetailsActivity.names.add(DualPlayerDetailsActivity.times.get(i));
+                                    }
                                     DualPlayerDetailsActivity.times.set(i,Double.toString(GameView.player1Time));
                                     DualPlayerDetailsActivity.names.set(i,DualPlayerDetailsActivity.user1);
                                     break;
@@ -66,6 +73,13 @@ public class Game {
                             for(int i=0;i<DualPlayerDetailsActivity.times.size();i++){
                                 Log.i("i",Integer.toString(i));
                                 if(GameView.player1Time< Double.parseDouble(DualPlayerDetailsActivity.times.get(i))){
+                                    if(i+1<DualPlayerDetailsActivity.names.size()) {
+                                        DualPlayerDetailsActivity.times.set(i + 1, DualPlayerDetailsActivity.times.get(i));
+                                        DualPlayerDetailsActivity.names.set(i + 1, DualPlayerDetailsActivity.names.get(i));
+                                    }else{
+                                        DualPlayerDetailsActivity.names.add(DualPlayerDetailsActivity.names.get(i));
+                                        DualPlayerDetailsActivity.names.add(DualPlayerDetailsActivity.times.get(i));
+                                    }
                                     DualPlayerDetailsActivity.times.set(i,Double.toString(GameView.player1Time));
                                     DualPlayerDetailsActivity.names.set(i,DualPlayerDetailsActivity.user1);
                                     break;
@@ -87,6 +101,13 @@ public class Game {
                             for(int i=0;i<DualPlayerDetailsActivity.times.size();i++){
                                 Log.i("i",Integer.toString(i));
                                 if(GameView.player2Time< Double.parseDouble(DualPlayerDetailsActivity.times.get(i))){
+                                    if(i+1<DualPlayerDetailsActivity.names.size()) {
+                                        DualPlayerDetailsActivity.times.set(i + 1, DualPlayerDetailsActivity.times.get(i));
+                                        DualPlayerDetailsActivity.names.set(i + 1, DualPlayerDetailsActivity.names.get(i));
+                                    }else{
+                                        DualPlayerDetailsActivity.names.add(DualPlayerDetailsActivity.names.get(i));
+                                        DualPlayerDetailsActivity.names.add(DualPlayerDetailsActivity.times.get(i));
+                                    }
                                     DualPlayerDetailsActivity.times.set(i,Double.toString(GameView.player2Time));
                                     DualPlayerDetailsActivity.names.set(i,DualPlayerDetailsActivity.user2);
                                     break;
@@ -101,6 +122,13 @@ public class Game {
                             for(int i=0;i<DualPlayerDetailsActivity.times.size();i++){
                                 Log.i("i",Integer.toString(i));
                                 if(GameView.player2Time< Double.parseDouble(DualPlayerDetailsActivity.times.get(i))){
+                                    if(i+1<DualPlayerDetailsActivity.names.size()) {
+                                        DualPlayerDetailsActivity.times.set(i + 1, DualPlayerDetailsActivity.times.get(i));
+                                        DualPlayerDetailsActivity.names.set(i + 1, DualPlayerDetailsActivity.names.get(i));
+                                    }else{
+                                        DualPlayerDetailsActivity.names.add(DualPlayerDetailsActivity.names.get(i));
+                                        DualPlayerDetailsActivity.names.add(DualPlayerDetailsActivity.times.get(i));
+                                    }
                                     DualPlayerDetailsActivity.times.set(i,Double.toString(GameView.player2Time));
                                     DualPlayerDetailsActivity.names.set(i,DualPlayerDetailsActivity.user2);
                                     break;

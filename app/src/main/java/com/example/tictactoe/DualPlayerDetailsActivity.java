@@ -28,6 +28,7 @@ public class DualPlayerDetailsActivity extends AppCompatActivity {
     public static ArrayList<String> names = new ArrayList<>();
     public static ArrayList<String> times = new ArrayList<>();
     SharedPreferences sharedPreferences;
+    String buffer1,buffer2,buffert1,buffert2;
    static int firstTime=0;
 
 
@@ -44,6 +45,17 @@ public class DualPlayerDetailsActivity extends AppCompatActivity {
             Log.i("t",Integer.toString(firstTime));
             names.add(sharedPreferences.getString("1", ""));
             times.add(sharedPreferences.getString("1t", ""));
+            buffer1 = sharedPreferences.getString("2",null);
+            buffert1 = sharedPreferences.getString("2t",null);
+            buffer2 = sharedPreferences.getString("3",null);
+            buffert2 = sharedPreferences.getString("3t",null);
+            if(buffer1!=null&&buffert1!=null){
+                names.add(buffer1);
+                times.add(buffert1);
+            } if(buffer2!=null&&buffert2!=null){
+                names.add(buffer2);
+                times.add(buffert2);
+            }
             //names.add(sharedPreferences.getString("2", ""));
             //times.add(sharedPreferences.getString("2t", ""));
             //names.add(sharedPreferences.getString("3", ""));

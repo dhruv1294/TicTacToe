@@ -81,11 +81,15 @@ public class DualPlayerPlayActivity extends AppCompatActivity {
         editor.putString("1t",DualPlayerDetailsActivity.times.get(0));
         if(DualPlayerDetailsActivity.names.size()>1){
             editor.putString("2",DualPlayerDetailsActivity.names.get(1));
+            Log.i("player2",DualPlayerDetailsActivity.names.get(1));
             editor.putString("2t",DualPlayerDetailsActivity.times.get(1));
+            Log.i("player2time",DualPlayerDetailsActivity.times.get(1));
         }
         if(DualPlayerDetailsActivity.names.size()>2){
             editor.putString("3",DualPlayerDetailsActivity.names.get(2));
+            Log.i("player3",DualPlayerDetailsActivity.names.get(2));
             editor.putString("3t",DualPlayerDetailsActivity.times.get(2));
+            Log.i("player3time",DualPlayerDetailsActivity.times.get(2));
         }
 
         editor.apply();
