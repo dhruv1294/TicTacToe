@@ -9,15 +9,20 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SinglePlayerPlayActivity"></activity>
+        <activity android:name=".SinglePlayerPlayActivity"
+            android:screenOrientation="portrait"></activity>
         <activity android:name=".DualPlayerPlayActivity"
-            android:noHistory="true"/>
+            android:noHistory="true"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".DualPlayerDetailsActivity"
+            android:screenOrientation="portrait"
             android:noHistory="true" />
-        <activity android:name=".HomeActivity" />
+        <activity android:name=".HomeActivity"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".MainActivity"
+            android:screenOrientation="portrait"
             android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

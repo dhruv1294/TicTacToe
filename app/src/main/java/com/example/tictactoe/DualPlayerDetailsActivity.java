@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
@@ -13,6 +15,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 public class DualPlayerDetailsActivity extends AppCompatActivity {
     EditText player1Name,player2Name;
@@ -22,6 +26,8 @@ public class DualPlayerDetailsActivity extends AppCompatActivity {
     public static MyAdapter myAdapter;
     public static ArrayList<String> names = new ArrayList<>();
     public static ArrayList<String> times = new ArrayList<>();
+    SharedPreferences sharedPreferences=getApplicationContext().getSharedPreferences("myprefs", Context.MODE_PRIVATE);
+
 
 
     @Override
@@ -29,9 +35,12 @@ public class DualPlayerDetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dual_player_details);
         leaderBoard = findViewById(R.id.leaderBoard);
-        leaderBoard.setLayoutManager(new LinearLayoutManager(this));
 
+        leaderBoard.setLayoutManager(new LinearLayoutManager(this));
+        names.add(sharedPreferences.getString("1","player"));
+        times.add(sharedPreferences.getString("1t","0"));
         myAdapter = new MyAdapter(this,names,times);
+
         leaderBoard.setAdapter(myAdapter);
         player1Name = findViewById(R.id.player1Name);
         player2Name = findViewById(R.id.player2Name);

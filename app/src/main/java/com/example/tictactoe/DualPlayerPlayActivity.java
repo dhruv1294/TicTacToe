@@ -3,8 +3,10 @@ package com.example.tictactoe;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ImageView;
@@ -16,6 +18,7 @@ public class DualPlayerPlayActivity extends AppCompatActivity {
     ImageView direction;
     TextView player1name,player2name;
     String name1,name2;
+    Context context = getApplicationContext();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +45,20 @@ public class DualPlayerPlayActivity extends AppCompatActivity {
         }
     }
     public void isEnded(String winner){
+        SharedPreferences sharedPreferences = context.getSharedPreferences("myprefs",Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.clear();
+        editor.putString("1",DualPlayerDetailsActivity.names.get(0));
+        editor.putString("1t",DualPlayerDetailsActivity.times.get(0));
+        if(DualPlayerDetailsActivity.names.size()>1){
+            editor.putString("2",DualPlayerDetailsActivity.names.get(1));
+            editor.putString("2t",DualPlayerDetailsActivity.times.get(1));
+        }
+        if(DualPlayerDetailsActivity.names.size()>2){
+            editor.putString("3",DualPlayerDetailsActivity.names.get(2));
+            editor.putString("3t",DualPlayerDetailsActivity.times.get(2));
+        }
+        editor.apply();
         new AlertDialog.Builder(DualPlayerPlayActivity.this)
                 .setTitle("TIC-TAC-TOE")
                 .setMessage(winner)

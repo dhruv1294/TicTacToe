@@ -1,11 +1,14 @@
 package com.example.tictactoe;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.util.Log;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Random;
+import java.util.Set;
 
 public class Game {
     int[] gameState = {0, 0, 0, 0, 0, 0, 0, 0, 0};
@@ -18,13 +21,16 @@ public class Game {
     int firstCompMove=0;
     int secondCompMove=0;
     SharedPreferences sharedPreferences;
+    Context context;
+    Set<String> names = new HashSet<>();
+    Set<String> times = new HashSet<>();
+
 
     public Game(){
         newGame();
         safeSpots = new ArrayList<Integer>();
         goodSpots = new ArrayList<Integer>();
         random = new Random();
-
     }
 
     public void setState(int playerState, int tappedCounter) {
@@ -98,6 +104,7 @@ public class Game {
                             GameView.player2Time = 0;
                         }
                     }
+
                     //DualPlayerDetailsActivity.myAdapter.notifyItemInserted(1);
                     winner = "ZERO";
                 }

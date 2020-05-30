@@ -1,6 +1,7 @@
 package com.example.tictactoe;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +22,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         namesfinal = new ArrayList<>();
         timerfinal= new ArrayList<>();
         context = ctx;
+
         namesfinal = names;
         timerfinal = timer;
     }
