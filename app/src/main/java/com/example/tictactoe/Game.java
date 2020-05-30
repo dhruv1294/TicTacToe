@@ -66,7 +66,7 @@ public class Game {
                         }
                     }
                     //DualPlayerDetailsActivity.myAdapter.notifyItemInserted(1);
-                    
+
                     winner = "CROSS";
 
                 } else {
