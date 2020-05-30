@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -26,7 +27,8 @@ public class DualPlayerDetailsActivity extends AppCompatActivity {
     public static MyAdapter myAdapter;
     public static ArrayList<String> names = new ArrayList<>();
     public static ArrayList<String> times = new ArrayList<>();
-    SharedPreferences sharedPreferences=getApplicationContext().getSharedPreferences("myprefs", Context.MODE_PRIVATE);
+    SharedPreferences sharedPreferences;
+   static int firstTime=0;
 
 
 
@@ -35,13 +37,42 @@ public class DualPlayerDetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dual_player_details);
         leaderBoard = findViewById(R.id.leaderBoard);
+        sharedPreferences=this.getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
 
         leaderBoard.setLayoutManager(new LinearLayoutManager(this));
-        names.add(sharedPreferences.getString("1","player"));
-        times.add(sharedPreferences.getString("1t","0"));
+        if(firstTime==0) {
+            Log.i("t",Integer.toString(firstTime));
+            names.add(sharedPreferences.getString("1", ""));
+            times.add(sharedPreferences.getString("1t", ""));
+            //names.add(sharedPreferences.getString("2", ""));
+            //times.add(sharedPreferences.getString("2t", ""));
+            //names.add(sharedPreferences.getString("3", ""));
+            //times.add(sharedPreferences.getString("3t", ""));
+            firstTime=1;
+        }
+        if(names.get(0).equals("")){
+            names.remove(0);
+        }
+        if(times.get(0).equals("")){
+            times.remove(0);
+        }
+        if(names.size()>1){
+        if(names.get(1).equals("")){
+            names.remove(1);
+        }
+        if(times.get(1).equals("")){
+            times.remove(1);
+        }}
+        /*if(names.get(2).equals("")){
+            names.remove(2);
+        }
+        if(times.get(2).equals("")){
+            times.remove(2);
+        }*/
         myAdapter = new MyAdapter(this,names,times);
 
         leaderBoard.setAdapter(myAdapter);
+
         player1Name = findViewById(R.id.player1Name);
         player2Name = findViewById(R.id.player2Name);
         playDualButton = findViewById(R.id.playDualButton);

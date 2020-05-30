@@ -18,7 +18,9 @@ public class DualPlayerPlayActivity extends AppCompatActivity {
     ImageView direction;
     TextView player1name,player2name;
     String name1,name2;
-    Context context = getApplicationContext();
+    Context context ;
+    SharedPreferences.Editor editor;
+    SharedPreferences sharedPreferences;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +38,9 @@ public class DualPlayerPlayActivity extends AppCompatActivity {
         player1name.setText(name1);
         player2name.setText(name2);
         game = new Game();
+        context=this;
+        sharedPreferences = context.getSharedPreferences("MyPrefs",Context.MODE_PRIVATE);
+
     }
     public void changeState(int playerState){
         if(playerState==2){
@@ -45,8 +50,32 @@ public class DualPlayerPlayActivity extends AppCompatActivity {
         }
     }
     public void isEnded(String winner){
-        SharedPreferences sharedPreferences = context.getSharedPreferences("myprefs",Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
+
+        new AlertDialog.Builder(DualPlayerPlayActivity.this)
+                .setTitle("TIC-TAC-TOE")
+                .setMessage(winner)
+                .setPositiveButton("PLAY AGAIN", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        saveData();
+                        newGame();
+                        recreate();
+                    }
+                })
+                .setNegativeButton("Home", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        saveData();
+                       Intent intent = new Intent(getApplicationContext(),HomeActivity.class);
+                       startActivity(intent);
+                    }
+                })
+                .show();
+
+
+    }
+    public void saveData(){
+        editor = sharedPreferences.edit();
         editor.clear();
         editor.putString("1",DualPlayerDetailsActivity.names.get(0));
         editor.putString("1t",DualPlayerDetailsActivity.times.get(0));
@@ -58,26 +87,8 @@ public class DualPlayerPlayActivity extends AppCompatActivity {
             editor.putString("3",DualPlayerDetailsActivity.names.get(2));
             editor.putString("3t",DualPlayerDetailsActivity.times.get(2));
         }
-        editor.apply();
-        new AlertDialog.Builder(DualPlayerPlayActivity.this)
-                .setTitle("TIC-TAC-TOE")
-                .setMessage(winner)
-                .setPositiveButton("PLAY AGAIN", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
 
-                        newGame();
-                        recreate();
-                    }
-                })
-                .setNegativeButton("Home", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                       Intent intent = new Intent(getApplicationContext(),HomeActivity.class);
-                       startActivity(intent);
-                    }
-                })
-                .show();
+        editor.apply();
     }
 
     private void newGame(){

@@ -40,6 +40,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
      String timerOne = timerfinal.get(position);
      holder.playerName.setText(name);
      holder.timer.setText(timerOne);
+     //if(name != null)
      holder.srNo.setText(Integer.toString(position+1));
     }
 

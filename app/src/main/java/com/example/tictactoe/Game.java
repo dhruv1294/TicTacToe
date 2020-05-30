@@ -24,6 +24,7 @@ public class Game {
     Context context;
     Set<String> names = new HashSet<>();
     Set<String> times = new HashSet<>();
+    DualPlayerPlayActivity activity ;
 
 
     public Game(){
@@ -49,6 +50,7 @@ public class Game {
                         GameView.player1Time = Math.round(GameView.player1Time * 100.0) / 100.0;
                         if(DualPlayerDetailsActivity.names.size()>2){
                             for(int i=0;i<DualPlayerDetailsActivity.times.size();i++){
+                                Log.i("i",Integer.toString(i));
                                 if(GameView.player1Time< Double.parseDouble(DualPlayerDetailsActivity.times.get(i))){
                                     DualPlayerDetailsActivity.times.set(i,Double.toString(GameView.player1Time));
                                     DualPlayerDetailsActivity.names.set(i,DualPlayerDetailsActivity.user1);
@@ -62,6 +64,7 @@ public class Game {
                                 DualPlayerDetailsActivity.times.add(Double.toString(GameView.player1Time));
                             }
                             for(int i=0;i<DualPlayerDetailsActivity.times.size();i++){
+                                Log.i("i",Integer.toString(i));
                                 if(GameView.player1Time< Double.parseDouble(DualPlayerDetailsActivity.times.get(i))){
                                     DualPlayerDetailsActivity.times.set(i,Double.toString(GameView.player1Time));
                                     DualPlayerDetailsActivity.names.set(i,DualPlayerDetailsActivity.user1);
@@ -72,7 +75,7 @@ public class Game {
                         }
                     }
                     //DualPlayerDetailsActivity.myAdapter.notifyItemInserted(1);
-
+                   // activity.saveData();
                     winner = "CROSS";
 
                 } else {
@@ -82,6 +85,7 @@ public class Game {
                         GameView.player2Time = Math.round(GameView.player2Time * 100.0) / 100.0;
                         if(DualPlayerDetailsActivity.names.size()>2){
                             for(int i=0;i<DualPlayerDetailsActivity.times.size();i++){
+                                Log.i("i",Integer.toString(i));
                                 if(GameView.player2Time< Double.parseDouble(DualPlayerDetailsActivity.times.get(i))){
                                     DualPlayerDetailsActivity.times.set(i,Double.toString(GameView.player2Time));
                                     DualPlayerDetailsActivity.names.set(i,DualPlayerDetailsActivity.user2);
@@ -95,6 +99,7 @@ public class Game {
                                 DualPlayerDetailsActivity.times.add(Double.toString(GameView.player2Time));
                             }
                             for(int i=0;i<DualPlayerDetailsActivity.times.size();i++){
+                                Log.i("i",Integer.toString(i));
                                 if(GameView.player2Time< Double.parseDouble(DualPlayerDetailsActivity.times.get(i))){
                                     DualPlayerDetailsActivity.times.set(i,Double.toString(GameView.player2Time));
                                     DualPlayerDetailsActivity.names.set(i,DualPlayerDetailsActivity.user2);
@@ -104,7 +109,7 @@ public class Game {
                             GameView.player2Time = 0;
                         }
                     }
-
+                   // activity.saveData();
                     //DualPlayerDetailsActivity.myAdapter.notifyItemInserted(1);
                     winner = "ZERO";
                 }
